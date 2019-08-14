@@ -34,15 +34,23 @@ public class SpeakerController {
         mv.addObject("maxPage",maxPage);
         mv.addObject("page",page);
         mv.addObject("list",service.selectByPage(page*5));
-        mv.setViewName("jsp/Speaker.jsp");
+        mv.setViewName("Speaker");
 
         return mv;
 
     }
+    
+    @RequestMapping("speakerAddSkip")
+    public String speakerAddSkip(){
+    	return "speakerAdd";
+    }
+    
+    
+    
     @RequestMapping("updateSpeakerData")
     public ModelAndView updateSpeakerData(int id){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("jsp/speakerUpdate.jsp");
+        mv.setViewName("speakerUpdate");
         mv.addObject("speaker", service.selectById(id));
         System.out.println(service.selectById(id).toString());
         return mv;
@@ -52,14 +60,14 @@ public class SpeakerController {
     public String updateSpeaker(Speaker speaker){
         System.out.println(speaker.toString());
         service.update(speaker);
-        return "forward:selectSpeakerPage.do";
+        return "forward:selectSpeakerPage";
     }
 
 
     @RequestMapping("addSpeaker")
     public String addSpeaker(Speaker speaker,HttpServletRequest request){
         service.add(speaker);
-        return "forward:selectSpeakerPage.do";
+        return "forward:selectSpeakerPage";
     }
 
     @RequestMapping("deleteSpeaker")
@@ -75,7 +83,7 @@ public class SpeakerController {
         for (int i = 0; i < strings.length; i++) {
             service.delete(Integer.parseInt(strings[i]));
         }
-        return "forward:selectSpeakerPage.do";
+        return "forward:selectSpeakerPage";
     }
 
 }

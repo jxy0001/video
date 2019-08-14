@@ -62,7 +62,7 @@ public class VideoController {
         mv.addObject("list",service.selectByPage(map));
         mv.addObject("course",courseService.selectAll());
         mv.addObject("speaker",speakerService.selectAll());
-        mv.setViewName("jsp/video.jsp");
+        mv.setViewName("video");
 
         return mv;
     }
@@ -72,7 +72,7 @@ public class VideoController {
         ModelAndView mv = new ModelAndView();
         System.out.println("video======="+id);
         System.out.println("service.selectById(id)"+service.selectById(id).toString());
-        mv.setViewName("jsp/videoUpdate.jsp");
+        mv.setViewName("videoUpdate");
         mv.addObject("course",courseService.selectAll());
         mv.addObject("video", service.selectById(id));
         mv.addObject("speaker",speakerService.selectAll());
@@ -83,13 +83,13 @@ public class VideoController {
     @RequestMapping("updateVideo")
     public String update(Video video){
         service.update(video);
-        return "redirect:selectVideoPage.do?page=0";
+        return "redirect:selectVideoPage?page=0";
     }
 
     @RequestMapping("addVideoData")
     public ModelAndView addData(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("jsp/videoAdd.jsp");
+        mv.setViewName("videoAdd");
         mv.addObject("course",courseService.selectAll());
         mv.addObject("speaker",speakerService.selectAll());
         return mv;
@@ -100,7 +100,7 @@ public class VideoController {
         service.add(video);
         System.out.println("video======"+video.toString());
         System.out.println("speakId===="+request.getParameter("speakerId"));
-        return "redirect:selectVideoPage.do?page=0";
+        return "redirect:selectVideoPage?page=0";
     }
 
     @RequestMapping("deleteVideo")
@@ -116,7 +116,7 @@ public class VideoController {
         for (int i = 0; i < strings.length; i++) {
             service.delete(Integer.parseInt(strings[i]));
         }
-        return "redirect:selectVideoPage.do?page=0";
+        return "redirect:selectVideoPage?page=0";
     }
 
     @RequestMapping("selectVideos")
@@ -124,7 +124,7 @@ public class VideoController {
         List<Video> VideoList =  service.selectVideos(subjectId);
         List<Course> courseList = courseService.selectBySubjectId(subjectId);
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("jsp/courseShow.jsp");
+        mv.setViewName("courseShow");
         mv.addObject("VideoList",VideoList);
         mv.addObject("courseList",courseList);
         return mv;
@@ -138,7 +138,7 @@ public class VideoController {
         Course course = courseService.selectById(courseId);
         List<Video> list = service.selectByCourseId(courseId);
         System.out.println(list.toString());
-        mv.setViewName("jsp/videoPlay.jsp");
+        mv.setViewName("videoPlay");
         mv.addObject("speaker",speaker);
         mv.addObject("course",course);
         mv.addObject("video",video);

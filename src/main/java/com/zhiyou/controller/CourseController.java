@@ -37,7 +37,7 @@ public class CourseController {
         mv.addObject("maxPage",maxPage);
         mv.addObject("page",page);
         mv.addObject("list",service.selectByPage(page*5));
-        mv.setViewName("jsp/managerMain.jsp");
+        mv.setViewName("managerMain");
 
         return mv;
 
@@ -60,18 +60,15 @@ public class CourseController {
     @RequestMapping("addData")
     public ModelAndView addData(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("jsp/courseAdd.jsp");
+        mv.setViewName("courseAdd");
         mv.addObject("subject",subjectService.selectAll());
         return mv;
     }
 
     @RequestMapping("addCourse")
     public String addCourse(Course course,HttpServletRequest request){
-        System.out.println("====addCourse=====");
-        System.out.println("subjectID---"+request.getParameter("subjectID"));
         service.add(course);
-        System.out.println(course.toString());
-        return "forward:selectByPage.do";
+        return "forward:selectByPage";
     }
 
     @RequestMapping("deleteCourse")
@@ -87,7 +84,7 @@ public class CourseController {
         for (int i = 0; i < strings.length; i++) {
             service.delete(Integer.parseInt(strings[i]));
         }
-        return "forward:selectByPage.do";
+        return "forward:selectByPage";
     }
 
 }
