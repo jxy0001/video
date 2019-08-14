@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyou.mapper.CourseDao">
+
+    <resultMap type="com.zhiyou.model.Course" id="courseMap">
+        <id column="id" property="id"/>
+        <result column="course_title" property="courseTitle"/>
+        <result column="course_desc" property="courseDesc"/>
+        <result column="subject_id" property="subjectId"/>
+    </resultMap>
+
+    <insert id="add" parameterType="com.zhiyou.model.Course">
+        INSERT INTO course VALUES (null,#{courseTitle},#{courseDesc},#{subjectId});
+    </insert>
+
+    <delete id="delete">
+        delete from course where id=#{courseId}
+    </delete>
+
+    <update id="update" parameterType="com.zhiyou.model.Course">
+        update course
+        <set>
+            <if test="courseTitle!=null and courseTitle!=''">
+                course_Title = #{courseTitle},
+            </if>
+            <if test="courseDesc!=null and courseDesc!=''">
+                course_Desc = #{courseDesc},
+            </if>
+            <if test="subjectId!=null and subjectId!=''">
+                subject_Id = #{subjectId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectNums" resultType="int">
+        select count(*) from course
+    </select>
+
+    <select id="selectByPage" resultMap="courseMap" parameterType="int">
+        select * from course limit #{num},5;
+    </select>
+
+    <select id="selectById" resultMap="courseMap">
+        select * from course where id=#{id}
+    </select>
+
+    <select id="selectAll" resultMap="courseMap">
+        select * from course
+    </select>
+
+    <select id="selectBySubjectId" resultMap="courseMap">
+        select * from course where subject_id = #{subjectId};
+    </select>
+
+
+</mapper>

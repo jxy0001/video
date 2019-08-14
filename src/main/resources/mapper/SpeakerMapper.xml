@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyou.mapper.SpeakerDao">
+
+    <resultMap type="com.zhiyou.model.Speaker" id="speakerMap">
+        <id column="id" property="id"/>
+        <result column="speaker_name" property="speakerName"/>
+        <result column="speaker_desc" property="speakerDesc"/>
+        <result column="speaker_job" property="speakerJob"/>
+        <result column="pic_url" property="picUrl"/>
+    </resultMap>
+
+    <insert id="add" parameterType="com.zhiyou.model.Speaker">
+        INSERT INTO speaker VALUES (null,#{speakerName},#{speakerDesc},#{speakerJob},#{picUrl});
+    </insert>
+
+    <delete id="delete">
+        delete from speaker where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="com.zhiyou.model.Speaker">
+        update speaker
+        <set>
+            <if test="speakerName!=null and speakerName!=''">
+                speaker_name = #{speakerName},
+            </if>
+            <if test="speakerDesc!=null and speakerDesc!=''">
+                speaker_desc = #{speakerDesc},
+            </if>
+            <if test="speakerJob!=null and speakerJob!=''">
+                speaker_job = #{speakerJob},
+            </if>
+            <if test="picUrl!=null and picUrl!=''">
+                pic_url = #{picUrl},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectNums" resultType="int">
+        select count(*) from speaker
+    </select>
+
+    <select id="selectByPage" resultMap="speakerMap" parameterType="int">
+        select * from speaker limit #{num},5;
+    </select>
+
+    <select id="selectById" resultMap="speakerMap">
+        select * from speaker where id=#{id}
+    </select>
+
+    <select id="selectAll" resultMap="speakerMap">
+        select * from speaker
+    </select>
+   <!-- <select id="findSpeakerById" parameterType="int" resultMap="speakerMap">
+        SELECT * FROM speaker WHERE id = #{id}
+   </select>-->
+
+</mapper>

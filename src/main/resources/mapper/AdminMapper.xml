@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyou.mapper.AdminDao">
+
+    <resultMap type="com.zhiyou.model.Admin" id="AdminMap">
+        <id column="admin_id" property="adminId"/>
+        <result column="accounts" property="accounts"/>
+        <result column="password" property="password"/>
+        <result column="admin_remark" property="adminRemark"/>
+    </resultMap>
+
+    <select id="selectAdmin" resultMap="AdminMap">
+        select * from admin where accounts=#{accounts}
+    </select>
+
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyou.mapper.UserDao">
+
+    <resultMap type="com.zhiyou.model.User" id="userMap">
+        <id column="id" property="id"/>
+        <result column="accounts" property="accounts"/>
+        <result column="phone" property="phone"/>
+        <result column="password" property="password"/>
+        <result column="nickname" property="nickname"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <result column="address" property="address"/>
+        <result column="imgurl" property="imgurl"/>
+        <result column="createtime" property="createtime"/>
+    </resultMap>
+
+    <insert id="add" parameterType="com.zhiyou.model.User">
+        INSERT INTO user VALUES (null,#{accounts}, null, #{password} , #{nickname}, null, null, null, '/upload/avatar_lg.png', CURRENT_TIMESTAMP );
+    </insert>
+
+    <delete id="delete">
+        delete from user where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="com.zhiyou.model.User">
+        update user
+        <set>
+            <if test="phone!=null and phone!=''">
+                phone = #{phone},
+            </if>
+            <if test="password!=null and password!=''">
+                password = #{password},
+            </if>
+            <if test="nickname!=null and nickname!=''">
+                nickname = #{nickname},
+            </if>
+            <if test="sex!=null and sex!=''">
+                sex = #{sex},
+            </if>
+            <if test="birthday!=null and birthday!=''">
+                birthday = #{birthday},
+            </if>
+            <if test="address!=null and address!=''">
+                address = #{address},
+            </if>
+            <if test="imgurl!=null and imgurl!=''">
+                imgurl = #{imgurl},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectByAccount" resultMap="userMap" parameterType="String">
+        select * from user where accounts=#{accounts}
+    </select>
+
+    <select id="selectById" resultMap="userMap">
+        select * from user where id=#{id}
+    </select>
+
+    <update id="updatePassword">
+        update user set password = #{password} where id=#{id}
+    </update>
+
+    <update id="updateHeadLogo">
+        update user set imgurl = #{imgurl} where id=#{id}
+    </update>
+
+</mapper>

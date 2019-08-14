@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyou.mapper.VideoDao">
+
+    <resultMap type="com.zhiyou.model.Video" id="videoMap">
+        <id column="video_id" property="videoId"/>
+        <result column="title" property="title"/>
+        <result column="detail" property="detail"/>
+        <result column="time" property="time"/>
+        <result column="speaker_id" property="speakerId"/>
+        <result column="course_id" property="courseId"/>
+        <result column="video_url" property="videoUrl"/>
+        <result column="image_url" property="imageUrl"/>
+        <result column="play_num" property="playNum"/>
+        <association property="speaker" javaType="com.zhiyou.model.Speaker">
+            <id column="speaker_id" property="id"></id>
+            <result column="speaker_name" property="speakerName"/>
+        </association>
+        <association property="course" javaType="com.zhiyou.model.Course">
+            <id column="course_id" property="id"/>
+            <result column="subject_id" property="subjectId"/>
+        </association>
+    </resultMap>
+
+
+    <insert id="add" parameterType="com.zhiyou.model.Video">
+        INSERT INTO video VALUES (null,#{title},#{detail},#{time},#{speakerId},#{courseId},#{videoUrl},
+        #{imageUrl},0);
+    </insert>
+
+    <delete id="delete">
+        delete from video where video_id=#{videoId}
+    </delete>
+
+    <update id="update" parameterType="com.zhiyou.model.Video">
+        update video
+        <set>
+            <if test="title!=null and title!=''">
+                title = #{title},
+            </if>
+            <if test="detail!=null and detail!=''">
+                detail = #{detail},
+            </if>
+            <if test="time!=null and time!=''">
+                time = #{time},
+            </if>
+            <if test="speakerId!=null and speakerId!=''">
+                speaker_id = #{speakerId},
+            </if>
+            <if test="courseId!=null and courseId!=''">
+                course_id = #{courseId},
+            </if>
+            <if test="videoUrl!=null and videoUrl!=''">
+                video_url = #{videoUrl},
+            </if>
+            <if test="imageUrl!=null and imageUrl!=''">
+                image_url = #{imageUrl},
+            </if>
+            <if test="playNum!=null and playNum!=''">
+                play_num = #{playNum},
+            </if>
+        </set>
+        where video_id = #{videoId}
+    </update>
+
+    <select id="selectNums" resultType="int">
+        select count(*) from video
+    </select>
+
+    <select id="selectNumsByPage" resultType="int">
+        select count(*) from video v left join speaker s
+        on v.speaker_id=s.id
+        <where>
+            <if test="title!=null and title!=''">
+                and v.title like concat("%",concat(#{title},"%"))
+            </if>
+            <if test="speakerId!=null and speakerId!=''">
+                and v.speaker_id = #{speakerId}
+            </if>
+            <if test="courseId!=null and courseId!=''">
+                and v.course_id = #{courseId}
+            </if>
+
+        </where>
+    </select>
+
+    <select id="selectByPage" resultMap="videoMap" parameterType="map">
+        select * from video v left join speaker s
+        on v.speaker_id=s.id
+        <where>
+            <if test="title!=null and title!=''">
+                and v.title like concat("%",concat(#{title},"%"))
+            </if>
+            <if test="speakerId!=null and speakerId!=''">
+                and v.speaker_id = #{speakerId}
+            </if>
+            <if test="courseId!=null and courseId!=''">
+                and v.course_id = #{courseId}
+            </if>
+
+        </where>
+
+        limit #{num},5;
+    </select>
+
+    <select id="selectById" resultMap="videoMap">
+        select * from video where video_Id=#{videoId}
+    </select>
+
+    <select id="selectVideos" resultMap="videoMap">
+        select * from video where course_id in (select id from course where subject_id=#{subjectId})
+    </select>
+
+    <select id="selectByCourseId" resultMap="videoMap">
+        select * from video,speaker where video.speaker_id=speaker.Id and course_id =#{courseId}
+    </select>
+</mapper>
