@@ -87,6 +87,7 @@ public class LoginController {
 		User user = userService.selectByAccount(email);
 		if((user.getPassword()).equals(md5Pass)) {
 			session.setAttribute("e", email);
+			session.setAttribute("user", user);
 			return "index";
 		}else {
 			req.setAttribute("msg","密码错误");

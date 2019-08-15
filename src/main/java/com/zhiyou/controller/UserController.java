@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -77,8 +78,14 @@ public class UserController {
     
     //个人中心的跳转
     @RequestMapping("personalCenterSkip")
-    public String personalCenterSkip(){
+    public String personalCenterSkip(String e){
         return "personalCenter";
+    }
+    
+    //个人中心的跳转
+    @RequestMapping("userUpdateSkip")
+    public String userUpdateSkip(String e){
+    	return "userUpdate";
     }
 
     @RequestMapping("updatePassword")

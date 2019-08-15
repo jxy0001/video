@@ -28,7 +28,7 @@
 				<a id="loginu_open">登录</a>
 				<a id="reg_open">注册</a>
 				<a id="tc" href="exit.do" style="display: none">退出</a>
-				<a id="tx" href="personalCenterSkip" style="display: none">${e}</a>
+				<a id="tx" href="personalCenterSkip?e=${e }" style="display: none">${e}</a>
 			</div>
 
 		<a onclick="JavaScript:addFavorite2()"><img src="static/z/sc.png" draggable="false">加入收藏</a>
