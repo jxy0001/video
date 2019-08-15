@@ -32,9 +32,9 @@
     <menu>
         <div class="container clearfix">
             <ul class="clearfix f_left">
-                <li><a href="http://localhost:8080/video/jsp/main.jsp">首页</a></li>
+                <li><a href="index">首页</a></li>
 
-                <li class="menu_active"><a href="http://localhost:8080/video/jsp/personalCenter.jsp">个人中心</a></li>
+                <li class="menu_active"><a href="personalCenterSkip">个人中心</a></li>
             </ul>
 
             <div id="user_bar">
@@ -54,11 +54,11 @@
         <h2>我的资料</h2>
         <div id="profile_tab">
             <ul class="profile_tab_header f_left clearfix">
-                <li><a href="http://localhost:8080/video/jsp/userUpdate.jsp">更改资料</a></li>
+                <li><a href="userUpdateSkip">更改资料</a></li>
                 <li class="profile_tab_line">|</li>
-                <li><a href="http://localhost:8080/video/jsp/headLogo.jsp">更改头像</a></li>
+                <li><a href="headLogoSkip">更改头像</a></li>
                 <li class="profile_tab_line">|</li>
-                <li><a href="http://localhost:8080/video/jsp/passwordUpdate.jsp">密码安全</a></li>
+                <li><a href="passwordUpdateSkip">密码安全</a></li>
             </ul>
             <div class="proflle_tab_body">
 
@@ -68,10 +68,7 @@
                         <img id="avatar2" width="200px;" src="${user.imgurl}" alt="">
 
 
-                        <p>
-
-
-                            欢迎回来！</p>
+                        <p>   欢 迎 回 来 ！</p>
                     </div>
                     <ul class="profile_ifo_area">
                         <li><span class="dd">昵　称：${user.nickname}</span></li>
