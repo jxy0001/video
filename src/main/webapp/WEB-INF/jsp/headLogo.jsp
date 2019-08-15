@@ -37,7 +37,7 @@
             <ul class="clearfix f_left">
                 <li><a href="http://localhost:8080/videoPlayer/jsp/main.jsp">首页</a></li>
 
-                <li class="menu_active"><a href="http://localhost:8080/videoPlayer/jsp/personalCenter.jsp">个人中心</a></li>
+                <li class="menu_active"><a href="http://localhost:8080/video/personalCenter">个人中心</a></li>
             </ul>
 
             <div id="user_bar">

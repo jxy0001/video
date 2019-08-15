@@ -45,7 +45,7 @@ public class LoginController {
 		
 	}
 	
-	@RequestMapping("checkPassword.do")
+	@RequestMapping("checkPassword")
 	public String checkPassword(HttpSession session,HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
@@ -55,7 +55,7 @@ public class LoginController {
 		Admin admin = adminService.selectAdmin(email);
 		if((admin.getPassword()).equals(md5Pass)) {
 			session.setAttribute("email", email);
-			return "forward:/courseShow.do";
+			return "forward:selectByPage";
 		}else {
 			req.setAttribute("msg","密码错误");
 			return "forward:/index.jsp";
@@ -87,6 +87,7 @@ public class LoginController {
 		User user = userService.selectByAccount(email);
 		if((user.getPassword()).equals(md5Pass)) {
 			session.setAttribute("e", email);
+			session.setAttribute("user", user);
 			return "index";
 		}else {
 			req.setAttribute("msg","密码错误");

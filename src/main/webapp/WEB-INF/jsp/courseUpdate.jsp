@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- saved from url=(0055)http://localhost:8080/Voids/Course/Courseupdate.do?id=6 -->
+<!-- saved from url=(0055)http://localhost:8080/Voids/Course/Courseupdate?id=6 -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>智游教育</title>
 
-    <link href="http://localhost:8080/videoPlayer/static/bootstrap.css" rel="stylesheet">
+    <link href="http://localhost:8080/video/static/bootstrap.css" rel="stylesheet">
 
     <style type="text/css">
         .col-md-1 {
@@ -47,13 +47,13 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
             <ul class="nav navbar-nav">
-                <li><a href="http://localhost:8080/videoPlayer/selectVideoPage.do?page=0">视频管理</a></li>
-                <li><a href="http://localhost:8080/videoPlayer/selectSpeakerPage.do?page=0">主讲人管理</a></li>
-                <li class="active"><a href="http://localhost:8080/videoPlayer/selectByPage.do?page=0">课程管理</a></li>
+                <li><a href="http://localhost:8080/video/selectVideoPage?page=0">视频管理</a></li>
+                <li><a href="http://localhost:8080/video/selectSpeakerPage?page=0">主讲人管理</a></li>
+                <li class="active"><a href="http://localhost:8080/video/selectByPage?page=0">课程管理</a></li>
 
             </ul>
             <p class="navbar-text navbar-right">
-                <span>${admin.accounts}</span> <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&nbsp;&nbsp;<a href="http://localhost:8080/videoPlayer/exit.do" class="navbar-link">退出</a>
+                <span>${email}</span> <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&nbsp;&nbsp;<a href="http://localhost:8080/video/exit.do" class="navbar-link">退出</a>
             </p>
         </div>
         <!-- /.navbar-collapse -->
@@ -79,7 +79,7 @@
 
 <div class="container" style="margin-top: 20px;">
 
-    <form id="infoForm" class="form-horizontal" method="post" action="http://localhost:8080/videoPlayer/updateCourse.do">
+    <form id="infoForm" class="form-horizontal" method="post" action="http://localhost:8080/video/updateCourse">
 
         <input name="id" value="6" type="hidden">
 
@@ -129,11 +129,11 @@
 <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<script src="http://localhost:8080/videoPlayer/static/jquery-1.js"></script>
-<script src="http://localhost:8080/videoPlayer/static/bootstrap.js"></script>
-<script src="http://localhost:8080/videoPlayer/static/confirm.js"></script>
-<script src="http://localhost:8080/videoPlayer/static/jquery.js"></script>
-<script src="http://localhost:8080/videoPlayer/static/message_cn.js"></script>
+<script src="http://localhost:8080/video/static/jquery-1.js"></script>
+<script src="http://localhost:8080/video/static/bootstrap.js"></script>
+<script src="http://localhost:8080/video/static/confirm.js"></script>
+<script src="http://localhost:8080/video/static/jquery.js"></script>
+<script src="http://localhost:8080/video/static/message_cn.js"></script>
 
 
 

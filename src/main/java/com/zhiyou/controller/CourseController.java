@@ -45,7 +45,7 @@ public class CourseController {
     @RequestMapping("updateData")
     public ModelAndView updateData(int id){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("jsp/courseUpdate.jsp");
+        mv.setViewName("courseUpdate");
         mv.addObject("subject",subjectService.selectAll());
         mv.addObject("course", service.selectById(id));
         return mv;
@@ -54,7 +54,7 @@ public class CourseController {
     @RequestMapping("updateCourse")
     public String update(Course course){
         service.update(course);
-        return "forward:selectByPage.do";
+        return "forward:selectByPage";
     }
 
     @RequestMapping("addData")
