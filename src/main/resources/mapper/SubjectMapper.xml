@@ -10,6 +10,10 @@
     <select id="selectAll" resultMap="subjectMap">
         select * from subject
     </select>
+    
+    <select id="selectOne"  resultMap="subjectMap" >
+		select * from subject where subject_id=#{subject_id} 
+	</select>
 
    <!-- <select id="findSubjectById" parameterType="int"  resultMap="subjectMap">
         SELECT * FROM speaker WHERE subject_id = #{subjectId}

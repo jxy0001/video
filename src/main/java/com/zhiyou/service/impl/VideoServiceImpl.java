@@ -72,4 +72,22 @@ public class VideoServiceImpl implements VideoService {
     public List<Video> selectByCourseId(int courseId) {
         return dao.selectByCourseId(courseId);
     }
+
+	@Override
+	public List<Video> selectShow(List course_ids) {
+		
+		return dao.selectShow(course_ids);
+	}
+
+	@Override
+	public Video selectConnectId(int video_id) {
+		
+		return dao.selectConnectId(video_id);
+	}
+
+	@Override
+	public List<Video> selectCatalog(int course_id, int video_id) {
+		
+		return dao.selectCatalog(course_id, video_id);
+	}
 }

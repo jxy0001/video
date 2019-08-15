@@ -19,8 +19,8 @@
 <meta name="description"
 	content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
 
-<link rel="stylesheet" href="z/base.css">
-<link rel="stylesheet" href="z/css.css">
+<link rel="stylesheet" href="static/z/base.css">
+<link rel="stylesheet" href="static/z/css.css">
 <link rel="icon" href="http://localhost:8080/video/favicon.png"
 	type="image/png">
 <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
@@ -44,10 +44,10 @@
 
 
 
-		<a onclick="JavaScript:addFavorite2()"><img src="z/sc.png"
+		<a onclick="JavaScript:addFavorite2()"><img src="static/z/sc.png"
 			draggable="false">加入收藏</a> <a target="_blank"><img
-			src="z/we.png" draggable="false">后台管理</a> <a class="color_e4"><img
-			src="z/phone.png" draggable="false"> 0371-88888598 4006-371-555</a>
+			src="static/z/we.png" draggable="false">后台管理</a> <a class="color_e4"><img
+			src="static/z/phone.png" draggable="false"> 0371-88888598 4006-371-555</a>
 
 	</div>
 	</header>
@@ -56,41 +56,41 @@
 	<div id="app">
 		<!--banner图-->
 		<div class="banner">
-			<img alt="" src="z/banner-1.jpg" width="100%" height="470px;">
+			<img alt="" src="static/z/banner-1.jpg" width="100%" height="470px;">
 		</div>
 
 		<!--面包屑导航-->
 		<div class="container mian-nav" id="navDiv">公开课 /
-			${sb.subject_name}</div>
+			${sb.subjectName}</div>
 		<c:forEach var="CT" items="${CL}">
 			<div class="classify">
 				<div class="container" id="dataContainer">
 					<div class="section">
 
 						<div class="classifyName">
-							<p class="title title-first">${CT.course_title}</p>
+							<p class="title title-first">${CT.courseTitle}</p>
 						</div>
 						<div class="kcIntro">
 							<p class="int">
-								<span>课程介绍：</span> ${CT.course_desc}
+								<span>课程介绍：</span> ${CT.courseDesc}
 							</p>
 						</div>
 
 
 						<ul>
 							<c:forEach var="vd" items="${vd}">
-								<c:if test="${CT.id eq vd.course_id}">
+								<c:if test="${CT.id eq vd.course.id}">
 
 									<li class="section-main"><a
-										href="videoPlay.do?video_id=${vd.video_id}&course_id=${vd.course_id}">
+										href="videoPlay.do?video_id=${vd.videoId}&course_id=${vd.course.id}">
 											<div class="thum"
-												style="background-image: url('${vd.image_url}')"></div>
+												style="background-image: url('${vd.imageUrl}')"></div>
 									</a>
 										<p>${vd.title}</p>
 										<div class="classify-v-info">
 											<span class="count" title="观看次数"><img
-												src="z/count.png" alt="">${vd.play_num}</span> <span
-												class="duration" title="视频时长"><img src="z/player.png"
+												src="static/z/count.png" alt="">${vd.playNum}</span> <span
+												class="duration" title="视频时长"><img src="static/z/player.png"
 												alt="">${vd.time}</span>
 										</div></li>
 
@@ -109,7 +109,7 @@
 		<!--页脚-->
 		<footer>
 		<ul>
-			<li><img src="z/footer_logo.png" alt="" draggable="false">
+			<li><img src="static/z/footer_logo.png" alt="" draggable="false">
 			</li>
 			<li class="mt25">
 				<h3>各校区地址</h3>
@@ -134,8 +134,8 @@
 					<li>电话:4006-371-555 0371-88888598</li>
 					<li class="erwei"><br>
 						<div>
-							<img class="weixin" src="z/a_002.png" alt="" draggable="false">
-							<img class="weibo" src="z/a.png" alt="" draggable="false">
+							<img class="weixin" src="static/z/a_002.png" alt="" draggable="false">
+							<img class="weibo" src="static/z/a.png" alt="" draggable="false">
 						</div></li>
 				</ul>
 			</li>
@@ -148,7 +148,7 @@
 		<div class="mask hidden" id="login">
 			<div class="mask_content">
 				<div class="mask_content_header">
-					<img src="z/logo.png" alt="" class="ma">
+					<img src="static/z/logo.png" alt="" class="ma">
 				</div>
 				<div class="mask_content_body">
 					<form id="loginForm" action="http://localhost:8080/Voids/#">
@@ -171,7 +171,7 @@
 		<div class="mask hidden" id="reg">
 			<div class="mask_content">
 				<div class="mask_content_header">
-					<img src="z/logo.png" alt="" class="ma">
+					<img src="static/z/logo.png" alt="" class="ma">
 				</div>
 				<div class="mask_content_body">
 					<form id="regForm"
@@ -209,9 +209,9 @@
 		</form>
 
 
-		<script src="z/jquery-1.js"></script>
-		<script src="z/gVerify.js"></script>
-		<script src="z/index.js"></script>
+		<script src="static/z/jquery-1.js"></script>
+		<script src="static/z/gVerify.js"></script>
+		<script src="static/z/index.js"></script>
 
 
 

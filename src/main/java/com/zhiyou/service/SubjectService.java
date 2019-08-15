@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface SubjectService {
     List<Subject> selectAll();
+    
+    Subject selectOne(int id);
 }

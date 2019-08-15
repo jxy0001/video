@@ -22,4 +22,10 @@ public class SubjectServiceImpl implements SubjectService {
     public List<Subject> selectAll() {
         return dao.selectAll();
     }
+
+	@Override
+	public Subject selectOne(int id) {
+		
+		return dao.selectOne(id);
+	}
 }

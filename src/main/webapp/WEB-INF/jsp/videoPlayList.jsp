@@ -12,8 +12,8 @@
     <meta name="keywords" content="Web前端视频教程,大数据视频教程,HTML5视频教程,UI视频教程,PHP视频教程,java视频教程,python基础教程">
     <meta name="description" content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
     
-<link rel="stylesheet" href="z/base.css">
-<link rel="stylesheet" href="z/css.css">
+<link rel="stylesheet" href="static/z/base.css">
+<link rel="stylesheet" href="static/z/css.css">
 <link rel="icon" href="http://localhost:8080/Voids/static/z/favicon.png" type="image/png">
     <link href="./视频播放_files/video-js.css" rel="stylesheet" type="text/css">
     <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
@@ -42,10 +42,10 @@
 		
 		
 
-		<a onclick="JavaScript:addFavorite2()"><img src="z/sc.png" draggable="false">加入收藏</a>
+		<a onclick="JavaScript:addFavorite2()"><img src="static/z/sc.png" draggable="false">加入收藏</a>
 		
-		<a target="_blank"><img src="z/we.png" draggable="false">后台管理</a>
-		<a class="color_e4"><img src="z/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
+		<a target="_blank"><img src="static/z/we.png" draggable="false">后台管理</a>
+		<a class="color_e4"><img src="staticz/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
 
 	</div>
 </header>
@@ -74,7 +74,7 @@
 				<p class="right-title">${v.title}</p>
 				<div class="avatar">
 					<span style="background-image: url(speakerimg/4.jpg)"></span>
-					<p><b>讲师：${v.speaker.speaker_name}</b><br><i></i></p>
+					<p><b>讲师：${v.speaker.speakerName}</b><br><i></i></p>
 				</div>
 				<p class="video-intro">
 					<span>本节内容：</span>${v.detail}
@@ -84,7 +84,7 @@
 
 		<div class="kcjs">
 			<p class="title">课程介绍</p>
-			<p class="content">${v.course.course_desc}</p>
+			<p class="content">${v.course.courseDesc}</p>
 		</div>
 
 	</div>
@@ -96,12 +96,12 @@
 		
 		<c:forEach var="vs" items="${vs}">
            <div class="chapter">
-				<p class="biaoti"><a href="videoPlay.do?video_id=${vs.video_id}&course_id=${vs.course_id}">${vs.title}</a></p>
+				<p class="biaoti"><a href="videoPlay.do?video_id=${vs.videoId}&course_id=${vs.course.id}">${vs.title}</a></p>
 				<p class="lecturer">${vs.detail}</p>
-				<p class="lecturer">讲师：${vs.speaker.speaker_name}</p>
+				<p class="lecturer">讲师：${vs.speaker.speakerName}</p>
 				<div class="v-info">
-					<span class="count"><img src="z/count.png" alt="">${vs.play_num}</span>
-					<span class="duration"><img src="z/player.png" alt="">${vs.time}</span>
+					<span class="count"><img src="staticz/count.png" alt="">${vs.playNum}</span>
+					<span class="duration"><img src="static/z/player.png" alt="">${vs.time}</span>
 				</div>
 			</div>
 		</c:forEach>	
@@ -117,7 +117,7 @@
 <footer>
 	<ul>
 		<li>
-			<img src="z/footer_logo.png" alt="" draggable="false">
+			<img src="static/z/footer_logo.png" alt="" draggable="false">
 		</li>
 		<li class="mt25">
 			<h3>各校区地址</h3>
@@ -138,8 +138,8 @@
 				<li class="erwei">
 					<br>
 					<div>
-						<img class="weixin" src="z/a.png" alt="" draggable="false">
-						<img class="weibo" src="z/a_002.png" alt="" draggable="false">
+						<img class="weixin" src="static/z/a.png" alt="" draggable="false">
+						<img class="weibo" src="static/z/a_002.png" alt="" draggable="false">
 					</div>
 				</li>
 			</ul>
@@ -153,7 +153,7 @@
 <div class="mask hidden" id="login">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="z/logo.png" alt="" class="ma">
+			<img src="static/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form id="loginForm" action="http://localhost:8080/Voids/#">
@@ -174,7 +174,7 @@
 <div class="mask hidden" id="reg">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="z/logo.png" alt="" class="ma">
+			<img src="static/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form id="regForm" action="http://localhost:8080/Voids/user/insertUser.action">
@@ -197,11 +197,11 @@
 
 
     
-<script src="z/jquery-1.js"></script>
-<script src="z/gVerify.js"></script>
-<script src="z/index.js"></script>
+<script src="static/z/jquery-1.js"></script>
+<script src="static/z/gVerify.js"></script>
+<script src="static/z/index.js"></script>
 
-    <script src="z/video.js"></script>
+    <script src="static/z/video.js"></script>
    
 
 
