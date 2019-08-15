@@ -28,7 +28,7 @@
 				<a id="loginu_open">登录</a>
 				<a id="reg_open">注册</a>
 				<a id="tc" href="exit.do" style="display: none">退出</a>
-				<a id="tx" href="userShow.do" style="display: none">${e}</a>
+				<a id="tx" href="personalCenterSkip" style="display: none">${e}</a>
 			</div>
 
 		<a onclick="JavaScript:addFavorite2()"><img src="static/z/sc.png" draggable="false">加入收藏</a>
@@ -195,14 +195,11 @@
 			<img src="static/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
-			<form id="loginForm" method="post" action="checkPassword.do">
+			<form id="loginForm" method="post" action="http://localhost:8080/video/checkPassword">
 				<h3>后台登录</h3>
 				<input id="loginEmail" placeholder="请输入邮箱" name="email" type="email" onblur="m()">
 				<input id="loginPassword" placeholder="请输入密码" name="password" type="password">
 				<i id="i"></i>
-				<div id="forget">
-					<a href="http://localhost:8080/video/front/user/forgetPassword.action">忘记密码？</a>
-				</div>
 				<input value="登　录" type="submit" id="sub">
 			</form>
 		</div>

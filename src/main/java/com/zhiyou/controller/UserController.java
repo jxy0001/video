@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     UserService service;
 
-    @RequestMapping("login")
+/*    @RequestMapping("login")
     @ResponseBody
     public String login(User u,HttpServletRequest request){
         String accounts = u.getAccounts();
@@ -41,20 +41,20 @@ public class UserController {
                 return "1";
             }
         }
-    }
+    }*/
 
-    @RequestMapping("exit")
+  /*  @RequestMapping("exit")
     public String exit(HttpServletRequest request){
         request.getSession().invalidate();
         return "redirect:jsp/main.jsp";
-    }
+    }*/
 
-    @RequestMapping("register")
+ /*   @RequestMapping("register")
     @ResponseBody
     public String register(User user,HttpServletRequest request,HttpServletResponse response){
         service.add(user);
         return "1";
-    }
+    }*/
 
 
     @RequestMapping("updateUser")
@@ -74,10 +74,15 @@ public class UserController {
     public String select(User user,HttpServletRequest request,HttpServletResponse response){
         return "1";
     }
+    
+    //个人中心的跳转
+    @RequestMapping("personalCenterSkip")
+    public String personalCenterSkip(){
+        return "personalCenter";
+    }
 
     @RequestMapping("updatePassword")
     public String updatePassword(int id, @RequestParam("password") String password,HttpServletRequest request){
-        System.out.println("=============password========="+password);
         service.updatePassword(id,password);
         request.getSession().setAttribute("user",service.selectById(id));
         return "redirect:exit.do";
