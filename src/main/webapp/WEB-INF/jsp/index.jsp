@@ -216,13 +216,13 @@
 			<img src="static/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
-			<form id="loginF" method="post" action="checkP.do">
+			<form id="loginF" method="post" action="http://localhost:8080/video/checkP.do">
 				<h3>用户登录</h3>
 				<input id="le" placeholder="请输入邮箱" name="email" type="email" onblur="n()">
 				<input id="lp" placeholder="请输入密码" name="password" type="password">
 				<i id="ii"></i>
 				<div id="forget">
-					<a href="http://localhost:8080/video/front/user/forgetPassword.action">忘记密码？</a>
+					<a href="http://localhost:8080/video/forgetPassword.do">忘记密码？</a>
 				</div>
 				<input value="登　录" type="submit" id="btn">
 			</form>
@@ -245,7 +245,10 @@
 						<span id="emailMsg"></span> 
 					<input placeholder="请输入密码" name="password" type="password"> 
 					<input placeholder="请再次输入密码" name="psw_again" type="password"> 
-						<span id="passMsg"></span>
+					<span id="passMsg"></span>
+                            <button class="btn btn-primary" id="btnn" onclick="nn()" type="button">获取验证码 <span id="time">60</span></button>
+                            <input class="form-control" id="in" type="text" placeholder="请输入验证码" name="num" onblur="mm()">
+                            <i id="it"></i>
 					<input value="注　册" type="submit" id="submitReg">
 				</form>
 		</div>
@@ -258,6 +261,12 @@
 <c:if test="${msg!=null}">
 		<script type="text/javascript">
 			alert('${msg}');
+		</script>
+	</c:if>
+	
+<c:if test="${inf!=null}">
+		<script type="text/javascript">
+			alert('${inf}');
 		</script>
 	</c:if>
 
@@ -276,8 +285,10 @@ document.getElementById("tc").style.display = "inline";
 <script src="static/z/index.js"></script>
 <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" >
+//管理员登录
 	function m() {
-		$.post({
+		$.ajax({
+			type : "post",
     		url:"http://localhost:8080/video/checkEmail.do",
     		data:{
     			name:$("#loginEmail").val()
@@ -293,9 +304,10 @@ document.getElementById("tc").style.display = "inline";
     		},
     	})
         }
-	
+	//用户登录
 	function n() {
-		$.post({
+		$.ajax({
+			type : "post",
     		url:"http://localhost:8080/video/checkE.do",
     		data:{
     			name:$("#le").val()
@@ -314,16 +326,20 @@ document.getElementById("tc").style.display = "inline";
 	
 	//注册验证
 	function user_accounts_reg() {
-		$.post({
+		$.ajax({
+			type : "post",
 				url : "http://localhost:8080/video/user_accounts_reg.do",
 				data : {
 					accountsCheck : $("#accounts").val(),
 				},
 				success : function(data) {
-				if (data == "success") {
+				if (data == 1) {
 					//如果已经注册，禁止提交
 					$("#submitReg").attr("disabled", true);
 					$("#emailMsg").text("该邮箱已注册，请直接登录").css( "color", "red");
+				}else if(data == 2){
+					$("#submitReg").attr("disabled", false);
+					$("#emailMsg").text("邮箱不能为空").css("color", "red");
 				} else {
 					$("#submitReg").attr("disabled", false);
 					$("#emailMsg").text("该邮箱可用").css("color", "green");
@@ -331,6 +347,62 @@ document.getElementById("tc").style.display = "inline";
 			}
 		})
 	}
+	
+	//倒计时
+	function nn() {
+		
+		$.ajax({
+			type : "post",
+    		url:"http://localhost:8080/video/num.do",
+    		data:{
+    			name:$("#accounts").val()
+    		},
+    		
+    	})
+    	
+    	 var setTime;
+        $(document).ready(function(){
+            var time=parseInt($("#time").text());
+            setTime=setInterval(function(){
+                if(time<=0){
+               	 document.getElementById("time").style.display="none";
+               	 $("#btnn").attr("disabled",false);
+               	 $.post({
+                		url:"http://localhost:8080/video/removeSession.do",
+                  		
+                  	})
+                    return;
+                }else{
+               	 $("#btnn").attr("disabled",true);
+                }
+                time--;
+                $("#time").text(time);
+            },1000);
+        });
+        
+	 }
+	
+	//验证码
+	 function mm() {
+		 $.ajax({
+				type : "post",
+    		url:"http://localhost:8080/video/verification.do",
+    		data:{
+    			name:$("#in").val()
+    		},
+    		success:function(data){
+    			if(data==1){
+   				$("#it").text("验证失败");
+   				$("#submitReg").attr("disabled",true);
+   			}else{
+   				$("#it").text("验证成功");
+   				$("#submitReg").attr("disabled",false);
+   			}
+    			
+    		},
+    		
+    	})
+        }
 	</script>	
 </body>
 </html>

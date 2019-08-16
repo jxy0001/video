@@ -26,16 +26,19 @@ public class RegisterController {
 			req.setCharacterEncoding("utf-8");
 			//1.检测是否存在
 			String accounts = req.getParameter("accountsCheck");
-			User user = us.selectByAccount(accounts);
+			User user = us.selectByEmail(accounts);
 			//2.通知页面到底有没有
+			if(accounts=="") {
+				resp.getWriter().write("2");
+			}else{
 
-			if(accounts!=""&&user!=null){
-				resp.getWriter().write("success");
+			if(user!=null){
+				resp.getWriter().write("1");
 			}else{
 				resp.getWriter().write("0");
 			}
 		}
-		
+		}
 		@RequestMapping("insertUser.do")
 		public String insertUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 			req.setCharacterEncoding("utf-8");

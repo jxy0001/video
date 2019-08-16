@@ -14,5 +14,7 @@ public interface UserService {
     User selectById(int id);
     void updatePassword(int id,String password);
     void updateHeadLogo(int id,String imgurl);
+    
+    User selectByEmail(String email);
    
 }

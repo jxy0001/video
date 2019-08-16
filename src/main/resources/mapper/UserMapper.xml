@@ -66,5 +66,9 @@
     <update id="updateHeadLogo">
         update user set imgurl = #{imgurl} where id=#{id}
     </update>
+    
+    <select id="selectByEmail" resultMap="userMap" parameterType="String">
+        select * from user where accounts=#{accounts}
+    </select>
 
 </mapper>
