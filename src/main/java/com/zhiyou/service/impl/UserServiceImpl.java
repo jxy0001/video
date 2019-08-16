@@ -4,6 +4,7 @@ import com.zhiyou.mapper.UserDao;
 import com.zhiyou.model.User;
 import com.zhiyou.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -58,4 +59,10 @@ public class UserServiceImpl implements UserService {
     public void updateHeadLogo(int id, String imgurl) {
         dao.updateHeadLogo(id,imgurl);
     }
+
+	@Override
+	public User selectByEmail(String email) {
+		
+		return dao.selectByEmail(email);
+	}
 }

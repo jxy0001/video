@@ -1,12 +1,13 @@
 package com.zhiyou.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * @author
  * @date 2019/6/17
  */
-public class User {
+public class User implements Serializable{
     private int id;
     private String accounts;
     private String phone;

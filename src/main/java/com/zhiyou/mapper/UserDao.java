@@ -17,6 +17,7 @@ public interface UserDao {
     List<User> selectById(int id);
     void updatePassword(@Param("id") int id, @Param("password") String password);
     void updateHeadLogo(@Param("id") int id, @Param("imgurl") String imgurl);
+    User selectByEmail(String email);
     
 
 }
