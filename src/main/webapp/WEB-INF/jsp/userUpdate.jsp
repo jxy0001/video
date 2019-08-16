@@ -39,7 +39,7 @@
             <ul class="clearfix f_left">
                 <li><a href="http://localhost:8080/video/jsp/main.jsp">首页</a></li>
 
-                <li class="menu_active"><a href="http://localhost:8080/video/jsp/personalCenter.jsp">个人中心</a></li>
+                <li class="menu_active"><a href="personalCenterSkip">个人中心</a></li>
             </ul>
 
             <div id="user_bar">
@@ -62,11 +62,11 @@
         <h2>我的资料</h2>
         <div id="profile_tab">
             <ul class="profile_tab_header f_left clearfix">
-                <li><a href="http://localhost:8080/video/jsp/userUpdate.jsp">更改资料</a></li>
+                <li><a href="userUpdateSkip">更改资料</a></li>
                 <li class="profile_tab_line">|</li>
-                <li><a href="http://localhost:8080/video/jsp/headLogo.jsp">更改头像</a></li>
+                <li><a href="headLogoSkip">更改头像</a></li>
                 <li class="profile_tab_line">|</li>
-                <li><a href="http://localhost:8080/video/jsp/passwordUpdate.jsp">密码安全</a></li>
+                <li><a href="passwordUpdateSkip">密码安全</a></li>
             </ul>
             <div class="proflle_tab_body">
                 <div class="proflle_tab_workplace clearfix">
@@ -78,7 +78,7 @@
 
                     </div>
                     <div class="profile_ifo_area">
-                        <form action="http://localhost:8080/video/updateUser.do">
+                        <form action="http://localhost:8080/video/updateUser" method="post">
                             <input type="hidden" name="imgUrl" value="${user.imgurl}">
                             <input name="id" value="${user.id}" type="hidden">
                             <input name="accounts" value="${user.accounts}" type="hidden">

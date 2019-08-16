@@ -36,9 +36,9 @@
     <menu>
         <div class="container clearfix">
             <ul class="clearfix f_left">
-                <li><a href="http://localhost:8080/video/jsp/main.jsp">首页</a></li>
+                <li><a href="index">首页</a></li>
 
-                <li class="menu_active"><a href="http://localhost:8080/video/jsp/personalCenter.jsp">个人中心</a></li>
+                <li class="menu_active"><a href="personalCenterSkip">个人中心</a></li>
             </ul>
 
             <div id="user_bar">
@@ -61,11 +61,11 @@
         <h2>我的资料</h2>
         <div id="profile_tab">
             <ul class="profile_tab_header f_left clearfix">
-                <li><a href="http://localhost:8080/video/jsp/userUpdate.jsp">更改资料</a></li>
+                <li><a href="userUpdateSkip">更改资料</a></li>
                 <li class="profile_tab_line">|</li>
-                <li><a href="http://localhost:8080/video/jsp/headLogo.jsp">更改头像</a></li>
+                <li><a href="headLogoSkip">更改头像</a></li>
                 <li class="profile_tab_line">|</li>
-                <li><a href="http://localhost:8080/video/jsp/passwordUpdate.jsp">密码安全</a></li>
+                <li><a href="passwordUpdateSkip">密码安全</a></li>
             </ul>
             <div class="proflle_tab_body">
                 <div class="proflle_tab_workplace clearfix">
@@ -79,25 +79,24 @@
 
                     </div>
                     <div class="profile_ifo_area">
-                        <form action="http://localhost:8080/video/updatePassword.do" method="post">
+                        <form action="" method="post" id="pwdForm">
 
                             <input name="id" value="${user.id}" type="hidden">
-                            <input name="realpwd" value="${user.password}" id="realpwd" type="hidden">
                             <div class="form_group">
                                 <span class="dd">旧　密　码：</span>
-                                <input type="password" id="old"><span id="oldMsg"></span>
+                                <input name="oldPassword" type="password" id="old" required="true"><span id="oldMsg"></span>
                             </div>
                             <div class="form_group">
                                 <span class="dd">新　密　码：</span>
-                                <input id="newPwd1" type="password">
+                                <input id="newPwd1" type="password" required="true">
                             </div>
                             <div class="form_group">
                                 <span class="dd">确认新密码：</span>
-                                <input name="password" type="password" id="newPwd2"><span id="passMsg"></span>
+                                <input name="password" type="password" id="newPwd2" required="true"><span id="passMsg"></span>
                             </div>
                             <div class="form_submit dd">
-                                <input value="保　存" type="submit">
-                                <a href="http://localhost:8080/video/jsp/personalCenter.jsp">取消</a>
+                                <input id="postBtn" value="保　存" type="button">
+                                <a href="personalCenterSkip">取消</a>
                             </div>
                         </form>
                     </div>
@@ -120,26 +119,31 @@
 </footer>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("form").submit(function () {
-            var realpwd = $("#realpwd").val();
-            var old = $("#old").val();
-            var newPwd1 = $("#newPwd1").val();
-            var newPwd2 = $("#newPwd2").val();
-            if (newPwd1!=newPwd2) {
-                $("#passMsg").val("两次密码输入不一致！");
-                return false;
-            }else {
-                if (old != realpwd) {
-                    $("#oldMsg").val("原密码不正确！");
-                    $("#oldMsg").attr(style("color:red"));
-                    return false;
-                }
-            }
-            return true;
-        });
+    	$("#postBtn").click(function(){
+    		if ($("#newPwd1").val()!=$("#newPwd2").val()) {
+				$("#passMsg").text("两次密码输入不一致！");
+				return;
+			}else{
+		       $.ajax({
+		    	   type:"post",
+		       	   url:"http://localhost:8080/video/updatePassword",
+		       	   data:$("#pwdForm").serialize(),
+		       	   
+		       	   datatype:"text",
+		       	   success:function(data){
+			    	   if(data=="500"){
+			    		  $("#oldMsg").text("原密码不正确！");
+			    		  return;
+			    	   }else{
+			    		   alert("修改成功！请重新登录！");
+			    		   location.href="exit.do";
+			    	   }
+		       	   }
+		       });
+			}
+    	
+    	})
 
-    });
 
 </script>
 
