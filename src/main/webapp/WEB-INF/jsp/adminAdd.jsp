@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- saved from url=(0047)http://localhost:8080/Voids/Course/addCourse -->
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://localhost:8080/Voids/Course/addCourse.do -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <!--<base href="http://localhost:8080/Voids/">--><base href=".">
@@ -49,10 +49,10 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="http://localhost:8080/video/selectVideoPage?page=0">视频管理</a></li>
-                <li><a href="http://localhost:8080/video/selectSpeakerPage?page=0">主讲人管理</a></li>
-                <li><a href="http://localhost:8080/video/selectByPage?page=0">课程管理</a></li>
-                <c:if test="${admin.adminRemark=='2' }">
+                <li><a href="http://localhost:8080/video/selectVideoPage.do?page=0">视频管理</a></li>
+                <li><a href="http://localhost:8080/video/selectSpeakerPage.do?page=0">主讲人管理</a></li>
+                <li class="active"><a href="http://localhost:8080/video/selectByPage.do?page=0">课程管理</a></li>
+				<c:if test="${admin.adminRemark=='2' }">
                 	<li><a href="http://localhost:8080/video/adminSkip">管理员管理</a></li>
                 </c:if>
             </ul>
@@ -71,7 +71,7 @@
     <div class="container">
 
 
-        <h2>添加视频信息</h2>
+        <h2>添加管理员</h2>
 
 
     </div>
@@ -81,70 +81,20 @@
 
 <div class="container" style="margin-top: 20px;">
 
-    <form id="infoForm" class="form-horizontal"  method="post" action="http://localhost:8080/video/addVideo">
-
-
-        <div class="form-group">
-            <label for="title" class="col-sm-2 control-label">视频标题</label>
-            <div class="col-sm-10">
-                <input class="form-control" name="title" id="title" placeholder="视频标题" type="text">
-            </div>
-        </div>
+    <form id="infoForm" class="form-horizontal"  method="post" action="http://localhost:8080/video/addAdmin">
 
         <div class="form-group">
-            <label for="subjectId" class="col-sm-2 control-label">主讲人</label>
+            <label for="accounts" class="col-sm-2 control-label">管理员账号</label>
             <div class="col-sm-10">
-            <select name="speakerId" id="speakerId" class="form-control">
-                <option value="0" selected="selected">请选择讲师</option>
-                <c:forEach items="${speaker}" var="sp">
-                    <option value="${sp.id}">${sp.speakerName}</option>
-                </c:forEach>
-            </select>
+                <input class="form-control" name="accounts" id="accounts" placeholder="管理员账号" type="text">
             </div>
         </div>
         <div class="form-group">
-            <label for="subjectId" class="col-sm-2 control-label">所属课程</label>
+            <label for="password" class="col-sm-2 control-label">管理员密码</label>
             <div class="col-sm-10">
-                <select name="subjectId" id="subjectId" class="form-control">
-                    <option value="0" selected="selected">请选择所属学科</option>
-
-                    <c:forEach items="${course}" var="course">
-                        <option value="${course.id}">${course.courseTitle}</option>
-                    </c:forEach>
-
-                </select>
+                <input class="form-control" name="password" id="password" placeholder="管理员密码" type="text">
             </div>
         </div>
-
-
-        <div class="form-group">
-            <label for="time" class="col-sm-2 control-label">视频时长</label>
-            <div class="col-sm-10">
-                <input class="form-control" name="time" id="time" placeholder="精确到秒" type="text">
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <label for="imageUrl" class="col-sm-2 control-label">封面图片地址</label>
-            <div class="col-sm-10">
-                <input class="form-control" name="imageUrl" id="imageUrl" placeholder="具体的url" type="text">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="videoUrl" class="col-sm-2 control-label">视频播放地址</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" id="videoUrl" name="videoUrl" placeholder="具体的url" rows="3"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="detail" class="col-sm-2 control-label">备注</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" id="detail" name="detail" placeholder="备注" rows="3"></textarea>
-            </div>
-        </div>
-
-
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default">保存</button>

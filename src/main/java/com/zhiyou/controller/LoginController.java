@@ -55,6 +55,7 @@ public class LoginController {
 		Admin admin = adminService.selectAdmin(email);
 		if((admin.getPassword()).equals(md5Pass)) {
 			session.setAttribute("email", email);
+			session.setAttribute("admin", adminService.selectAdmin(email));
 			return "forward:selectByPage";
 		}else {
 			req.setAttribute("msg","密码错误");

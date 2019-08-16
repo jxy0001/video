@@ -11,4 +11,14 @@ import java.util.List;
 public interface AdminDao {
     List<Admin> selectAdmin(String accounts);
     
+    List<Admin> selectAllAdmin();
+    
+    void addAdmin(Admin admin);
+    
+    void banAdmin(int id);
+    
+    void recoverAdmin(int id);
+    
+    void delAdminById(int id);
+    
 }

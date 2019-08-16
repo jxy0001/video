@@ -7,10 +7,31 @@
         <result column="accounts" property="accounts"/>
         <result column="password" property="password"/>
         <result column="admin_remark" property="adminRemark"/>
+        <result column="status" property="status"/>
     </resultMap>
 
     <select id="selectAdmin" resultMap="AdminMap">
         select * from admin where accounts=#{accounts}
     </select>
+    
+    <select id="selectAllAdmin" resultMap="AdminMap">
+        select * from admin
+    </select>
+    
+    <insert id="addAdmin" parameterType="com.zhiyou.model.Admin">
+    	insert into admin values(null,#{accounts},#{password},1,1)
+    </insert>
+    
+    <update id="banAdmin" parameterType="int">
+    	update admin set status=2 where admin_id=#{id}
+    </update>
+    
+     <update id="recoverAdmin" parameterType="int">
+    	update admin set status=1 where admin_id=#{id}
+    </update>
+    
+    <delete id="delAdminById" parameterType="int">
+    	delete from admin where admin_id=#{id}
+    </delete>
 
 </mapper>

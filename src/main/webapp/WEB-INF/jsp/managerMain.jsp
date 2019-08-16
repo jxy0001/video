@@ -37,9 +37,12 @@
                 <li><a href="http://localhost:8080/video/selectVideoPage?page=0">视频管理</a></li>
                 <li><a href="http://localhost:8080/video/selectSpeakerPage?page=0">主讲人管理</a></li>
                 <li class="active"><a href="http://localhost:8080/video/selectByPage?page=0">课程管理</a></li>
+                <c:if test="${admin.adminRemark=='2' }">
+                	<li><a href="http://localhost:8080/video/adminSkip">管理员管理</a></li>
+                </c:if> 
             </ul>
             <p class="navbar-text navbar-right">
-                <span>${email}</span> <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&nbsp;&nbsp;<a href="http://localhost:8080/videoPlayer/exit.do" class="navbar-link">退出</a>
+                <span>${email}</span> <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&nbsp;&nbsp;<a href="http://localhost:8080/video/exit.do" class="navbar-link">退出</a>
             </p>
         </div>
         <!-- /.navbar-collapse -->
@@ -48,7 +51,6 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-
 
 
 
@@ -125,9 +127,6 @@
 
 
 <script type="text/javascript">
-    function showAddPage(){
-        location.href="Course/addCourse";
-    }
 
     function deleteAll(){
         var str="";

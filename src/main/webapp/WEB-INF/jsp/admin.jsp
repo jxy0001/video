@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- saved from url=(0052)http://localhost:8080/Voids/controller/courseShow -->
+<!-- saved from url=(0052)http://localhost:8080/Voids/controller/courseShow.do -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!--<base href="http://localhost:8080/Voids/">--><base href=".">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,10 +35,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
             <ul class="nav navbar-nav">
                 <li><a href="http://localhost:8080/video/selectVideoPage?page=0">视频管理</a></li>
-                <li class="active"><a href="http://localhost:8080/video/selectSpeakerPage?page=0">主讲人管理</a></li>
+                <li><a href="http://localhost:8080/video/selectSpeakerPage?page=0">主讲人管理</a></li>
                 <li><a href="http://localhost:8080/video/selectByPage?page=0">课程管理</a></li>
                 <c:if test="${admin.adminRemark=='2' }">
-                	<li><a href="http://localhost:8080/video/adminSkip">管理员管理</a></li>
+                	<li class="active"><a href="http://localhost:8080/video/adminSkip">管理员管理</a></li>
                 </c:if>
             </ul>
             <p class="navbar-text navbar-right">
@@ -59,68 +59,49 @@
 
 <div class="jumbotron" style="padding-top: 15px;padding-bottom: 15px;">
     <div class="container">
-        <h2>主讲人管理</h2>
+        <h2>管理员管理  </h2>
     </div>
 </div>
 
 <form action="">
     <div class="container">
-        <a href="http://localhost:8080/video/speakerAddSkip" type="button" class="btn btn-info">
+        <a href="http://localhost:8080/video/addAdminSkip" type="button" class="btn btn-info">
             添加
         </a>
-
-        <button onclick="deleteAll()" type="button" id="btn" class="btn btn-info dropdown-toggle">
-            批量删除
-        </button>
     </div>
 
     <div class="container" style="margin-top: 20px;">
-
         <table class="table table-bordered table-hover" style="text-align: center;table-layout:fixed;">
             <thead>
-            <tr class="active">
-                <th><input type="checkbox" id="all"></th>
-                <th>序号</th>
-                <th style="width:12%">名称</th>
-                <th style="width:12%">职位</th>
-                <th style="width:60%">简介</th>
-                <th>编辑</th>
-                <th>删除</th>
-            </tr>
+	            <tr class="active">
+	                <th>编号</th>
+	                <th style="width:40%">账号</th>
+	                <th>状态</th>
+	                <th>编辑</th>
+	                <th>操作</th>
+	            </tr>
             </thead>
             <tbody>
+         
             <c:forEach items="${list}" var="list">
-
-                <tr>
-                    <td><input type="checkbox" value="${list.id}" name="check"></td>
-                    <td>${list.id}</td>
-                    <td>${list.speakerName}</td>
-                    <td>${list.speakerJob}</td>
-
-                    <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">${list.speakerDesc}</td>
-                    <td><a href="http://localhost:8080/video/updateSpeakerData?id=${list.id}">✎</a></td>
-                    <td><a onclick="delSpeakerById(${list.id})" >X</a></td>
-                </tr>
+				<c:if test="${list.adminRemark=='1' }">
+	                <tr>
+	                    <td>${list.adminId}</td>
+	                    <td style="overflow:hidden;white-space:nowrap;">${list.accounts}</td>
+	                    <c:if test="${list.status=='1' }">
+	                    	<td style="color: green">正常</td>
+	                    	<td><a href="http://localhost:8080/video/banAdmin?id=${list.adminId}">禁用</a></td>
+	                    	<td><a class="btn btn-xs" disabled="disabled" type="button" style="color: #ccc">删除</a></td>
+	                    </c:if>
+	                     <c:if test="${list.status=='2' }">
+	                     	<td style="color: red">禁用</td>
+	                    	<td><a href="http://localhost:8080/video/recoverAdmin?id=${list.adminId}">恢复</a></td>
+	                    	<td><a class="btn btn-warning btn-xs" type="button" onclick="delAdminById(${list.adminId})" >删除</a></td>
+	                    </c:if>
+	                </tr>
+				</c:if>
             </c:forEach>
-            <tr><td colspan="6">
-                <c:if test="${empty page || page==0}">
-                    <a type="button" class="btn btn-default btn-lg" disabled="disabled">已是首页</a>
-                </c:if>
-                <c:if test="${page>0}">
-                    <a type="button" class="btn btn-default btn-lg" href="http://localhost:8080/video/selectSpeakerPage?page=${page-1}">上一页</a>
-                </c:if>
-
-
-                <B>总共${maxPage}页,当前第${page+1}页</B>
-
-                <c:if test="${page==maxPage-1}">
-                    <a type="button" class="btn btn-default btn-lg" disabled="disabled">已是尾页</a>
-                </c:if>
-                <c:if test="${page<maxPage-1}">
-                    <a type="button" class="btn btn-default btn-lg" href="http://localhost:8080/video/selectSpeakerPage?page=${page+1}">下一页</a>
-                </c:if>
-
-            </td></tr>
+            
             </tbody>
         </table>
 
@@ -131,40 +112,26 @@
 
 
 <script type="text/javascript">
+	function  reload(){
+		location.reload(true);
+	}
 
-    function deleteAll(){
-        var str="";
-        $("input[name='check']:checkbox").each(function(){
-            if($(this).prop("checked")==true){
-                str=str+$(this).val()+",";
-            }
-        });
-        if (str==""){
-            Confirm.show("温馨提示：","您未选择数据！");
-            return;
-        }
-        window.location.href= "http://localhost:8080/video/deleteAllSpeaker?str="+str;
-    }
-
-
-    function delSpeakerById(id){
-
-        Confirm.show('温馨提示：', '确定要删除么？', {
+    function delAdminById(id){
+        Confirm.show('温馨提示：', '确定删除么？', {
             'Delete': {
                 'primary': true,
                 'callback': function() {
                     var param={"id":id};
-                    $.post("http://localhost:8080/video/deleteSpeaker",param,function(data){
-                        if(data=='success'){
-                            Confirm.show('温馨提示：', '删除成功');
-                            location.reload(false);
-                        }else{
-                            Confirm.show('温馨提示：', '操作失败');
-                        }
-                    });
+                    $.ajax({ 
+                    	url:"http://localhost:8080/video/deleteAdmin",
+                    	data:param,
+                    	success:function(data){
+                    		Confirm.show('温馨提示：', data.data);
+                    	}
+                    })
                 }
             }
-        });
+        })
     }
 </script>
 
