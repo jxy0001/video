@@ -151,7 +151,7 @@
         var i =5;
         function djs() {
             if(i==0){
-                window.location.href="http://localhost:8080/videoPlayer/jsp/main.jsp";
+                window.location.href="index";
             }
             document.getElementById("num").innerText=i--;
             setTimeout("djs()",1000);

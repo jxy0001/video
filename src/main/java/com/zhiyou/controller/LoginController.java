@@ -137,6 +137,15 @@ public class LoginController {
 		req.getSession().invalidate();
 		resp.sendRedirect("index");
 	}
+	
+
+	@RequestMapping("nologin")
+	public String nologin(){
+		return "NoLogin";
+	}
+
+
+	
 
 
 }

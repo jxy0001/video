@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0038)http://localhost:8080/Voids/user/go.do -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--<base href="http://localhost:8080/Voids/">--><base href=".">
  
 
@@ -12,9 +13,9 @@
     <meta name="keywords" content="Web前端视频教程,大数据视频教程,HTML5视频教程,UI视频教程,PHP视频教程,java视频教程,python基础教程">
     <meta name="description" content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
     
-<link rel="stylesheet" href="static/z/base.css">
-<link rel="stylesheet" href="static/z/css.css">
-<link rel="icon" href="http://localhost:8080/Voids/static/z/favicon.png" type="image/png">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/z/base.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/z/css.css">
+<link rel="icon" href="http://localhost:8080/Voids/${pageContext.request.contextPath}/static/z/favicon.png" type="image/png">
     <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
@@ -31,9 +32,9 @@
 				<a id="tx" href="personalCenterSkip?e=${e }" style="display: none">${e}</a>
 			</div>
 
-		<a onclick="JavaScript:addFavorite2()"><img src="static/z/sc.png" draggable="false">加入收藏</a>
-		<a id="logina_open"><img src="static/z/we.png" draggable="false">后台管理</a>
-		<a class="color_e4"><img src="static/z/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
+		<a onclick="JavaScript:addFavorite2()"><img src="${pageContext.request.contextPath}/static/z/sc.png" draggable="false">加入收藏</a>
+		<a id="logina_open"><img src="${pageContext.request.contextPath}/static/z/we.png" draggable="false">后台管理</a>
+		<a class="color_e4"><img src="${pageContext.request.contextPath}/static/z/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
 
 	</div>
 </header>
@@ -42,7 +43,7 @@
 
     <!--banner图-->
     <div class="banner index-banner">
-	<img alt="" src="static/z/banner-2.jpg">
+	<img alt="" src="${pageContext.request.contextPath}/static/z/banner-2.jpg">
 	</div>
 	
 	
@@ -55,29 +56,29 @@
                     <tbody><tr>
                         <td colspan="2">
                             <a href="CourseList.do?subject_id=1">
-                                <img src="static/z/html5.jpg" alt="" class="image scale" draggable="false">
+                                <img src="${pageContext.request.contextPath}/static/z/html5.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>Web前端教程</span>
-                                    <img src="static/z/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/static/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
                         <td>
                             <!--上线时修改id-->
                             <a href="CourseList.do?subject_id=6">
-                                <img src="static/z/ui.jpg" alt="" class="image scale" draggable="false">
+                                <img src="${pageContext.request.contextPath}/static/z/ui.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>UI设计教程</span>
-                                    <img src="static/z/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/static/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
                         <td rowspan="2" class="one_three">
                             <a  class="opacity5">
-                                <img src="static/z/java.jpg" alt="" class="image" draggable="false">
+                                <img src="${pageContext.request.contextPath}/static/z/java.jpg" alt="" class="image" draggable="false">
                                 <div class="headline">
                                     <span>Java教程</span>
-                                    <img src="static/z/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/static/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
@@ -85,19 +86,19 @@
                     <tr>
                         <td>
                             <a  class="opacity5">
-                                <img src="static/z/bigdata.jpg" alt="" class="image" draggable="false">
+                                <img src="${pageContext.request.contextPath}/static/z/bigdata.jpg" alt="" class="image" draggable="false">
                                 <div class="headline">
                                     <span>大数据教程</span>
-                                    <img src="static/z/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/static/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
                         <td colspan="2">
                             <a href="CourseList.do?subject_id=10">
-                                <img src="static/z/python.jpg" alt="" class="image scale" draggable="false">
+                                <img src="${pageContext.request.contextPath}/static/z/python.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>Python教程</span>
-                                    <img src="static/z/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/static/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
@@ -105,15 +106,15 @@
                     <tr>
                         <td colspan="2">
                             <a href="CourseList.do?subject_id=11">
-                                <img src="static/z/php.jpg" alt="" class="image scale" draggable="false">
+                                <img src="${pageContext.request.contextPath}/static/z/php.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>PHP教程</span>
-                                    <img src="static/z/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath}/static/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
                         <td colspan="2" class="three_two">
-                            <img src="static/z/qidai.jpg" alt="" class="image" draggable="false">
+                            <img src="${pageContext.request.contextPath}/static/z/qidai.jpg" alt="" class="image" draggable="false">
                             <div class="headline">
                                 更多课程，敬请期待...
                             </div>
@@ -156,7 +157,7 @@
 <footer>
 	<ul>
 		<li>
-			<img src="static/z/footer_logo.png" alt="" draggable="false">
+			<img src="${pageContext.request.contextPath}/static/z/footer_logo.png" alt="" draggable="false">
 		</li>
 		<li class="mt25">
 			<h3>各校区地址</h3>
@@ -177,8 +178,8 @@
 				<li class="erwei">
 					<br>
 					<div>
-						<img class="weixin" src="static/z/a_002.png" alt="" draggable="false">
-						<img class="weibo" src="static/z/a.png" alt="" draggable="false">
+						<img class="weixin" src="${pageContext.request.contextPath}/static/z/a_002.png" alt="" draggable="false">
+						<img class="weibo" src="${pageContext.request.contextPath}/static/z/a.png" alt="" draggable="false">
 					</div>
 				</li>
 			</ul>
@@ -192,7 +193,7 @@
 <div class="mask hidden" id="logina">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="static/z/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath}/static/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form id="loginForm" method="post" action="http://localhost:8080/video/checkPassword">
@@ -213,7 +214,7 @@
 <div class="mask hidden" id="loginu">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="static/z/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath}/static/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form id="loginF" method="post" action="http://localhost:8080/video/checkP.do">
@@ -236,7 +237,7 @@
 <div class="mask hidden" id="reg">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="static/z/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath}/static/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form action="insertUser.do" method="post">
@@ -280,10 +281,10 @@ document.getElementById("tc").style.display = "inline";
 </script>
 </c:if>
     
-<script src="static/z/jquery-1.js"></script>
-<script src="static/z/gVerify.js"></script>
-<script src="static/z/index.js"></script>
-<script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/z/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath}/static/z/gVerify.js"></script>
+<script src="${pageContext.request.contextPath}/static/z/index.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" >
 //管理员登录
 	function m() {

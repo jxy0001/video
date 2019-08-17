@@ -127,6 +127,7 @@
                     	data:param,
                     	success:function(data){
                     		Confirm.show('温馨提示：', data.data);
+                    		reload();
                     	}
                     })
                 }
