@@ -4,6 +4,7 @@ import com.zhiyou.mapper.SubjectDao;
 import com.zhiyou.model.Subject;
 import com.zhiyou.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
 	@Override
+	@Cacheable("Subject")
 	public Subject selectOne(int id) {
 		
 		return dao.selectOne(id);

@@ -4,6 +4,7 @@ import com.zhiyou.mapper.VideoDao;
 import com.zhiyou.model.Video;
 import com.zhiyou.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -74,6 +75,7 @@ public class VideoServiceImpl implements VideoService {
     }
 
 	@Override
+	@Cacheable("vShow")
 	public List<Video> selectShow(List course_ids) {
 		
 		return dao.selectShow(course_ids);
@@ -86,6 +88,7 @@ public class VideoServiceImpl implements VideoService {
 	}
 
 	@Override
+	@Cacheable("Catalog")
 	public List<Video> selectCatalog(int course_id, int video_id) {
 		
 		return dao.selectCatalog(course_id, video_id);

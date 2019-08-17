@@ -1,10 +1,12 @@
 package com.zhiyou.model;
 
+import java.io.Serializable;
+
 /**
  * @author
  * @date 2019/6/17
  */
-public class Admin {
+public class Admin implements Serializable{
 
     private int adminId;
     private String accounts;
