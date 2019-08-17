@@ -1,10 +1,12 @@
 package com.zhiyou.model;
 
+import java.io.Serializable;
+
 /**
  * @author
  * @date 2019/6/17
  */
-public class Subject {
+public class Subject implements Serializable{
     private int subjectId;
     private String subjectName;
 

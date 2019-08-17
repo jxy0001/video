@@ -81,7 +81,6 @@ public class LoginController {
 	}
 	
 	@RequestMapping("checkP.do")
-	@Cacheable("userLogin")
 	public String checkP(HttpSession session,HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String email = req.getParameter("email");
@@ -91,6 +90,7 @@ public class LoginController {
 		if((user.getPassword()).equals(md5Pass)) {
 			session.setAttribute("e", email);
 			session.setAttribute("user", user);
+			session.setMaxInactiveInterval(1000*60*60*24*10);
 			return "index";
 		}else {
 			req.setAttribute("msg","密码错误");

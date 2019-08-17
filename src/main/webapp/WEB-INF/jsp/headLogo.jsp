@@ -74,10 +74,6 @@
 
                         <img src="${user.imgurl}">
 
-
-
-
-
                         <p style="text-align: center;">当前头像</p>
                     </div>
                     <div class="profile_ifo_area">

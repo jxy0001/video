@@ -1,10 +1,12 @@
 package com.zhiyou.model;
 
+import java.io.Serializable;
+
 /**
  * @author
  * @date 2019/6/17
  */
-public class Speaker {
+public class Speaker implements Serializable{
     private int id;
     private String speakerName;
     private String speakerDesc;
