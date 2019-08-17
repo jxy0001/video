@@ -18,7 +18,7 @@ public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
        if (errorCodeList.contains(404)) {
             response.sendRedirect("/video/404.jsp");
             return false;
-        }
+        }     
         return super.preHandle(request, response, handler);
     }
 }
